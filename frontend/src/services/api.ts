@@ -1,4 +1,5 @@
-const API='http://localhost:8000/api';
+//const API='http://localhost:8000/api';
+const API = `${import.meta.env.VITE_API_URL}/api`;
 export type Device={id:number;device_name:string;device_type:string;operating_system:string;department:string;status:string;failed_login_attempts:number;open_ports:number;total_vulnerabilities:number;critical_vulnerabilities:number;patch_age_days:number;network_anomaly_score:number;malware_alerts:number;privilege_escalation_attempts:number;previous_security_incidents:number;created_at:string};
 export type Prediction={id?:number;device_id?:number;device_name:string;risk_score:number;risk_level:string;prediction_time:string;contributing_factors:{feature:string;importance:number;value:number}[];recommendations:string[];class_probabilities?:Record<string,number>};
 async function request(path:string, options:RequestInit={}) {
