@@ -29,8 +29,8 @@ npm run dev
 Open http://localhost:5173
 
 ## Demo login
-Email: `demo@gmail.com`
-Password: `demo123`
+Email: `demo1@gmail.com`
+Password: `Demo@1`
 
 Or use **Continue as Guest**.
 
