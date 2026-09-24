@@ -29,8 +29,8 @@ npm run dev
 Open http://localhost:5173
 
 ## Demo login
-Email: `demo@nixsecure.local`
-Password: `NixSecure123`
+Email: `demo@gmail.com`
+Password: `demo123`
 
 Or use **Continue as Guest**.
 
