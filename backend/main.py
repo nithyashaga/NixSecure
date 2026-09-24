@@ -11,8 +11,13 @@ from schemas.api import RegisterRequest, LoginRequest, DeviceOut, PredictionRequ
 from services.security import hash_password, verify_password
 from services.risk import recommendations, FEATURE_LABELS
 from ml.predictor import predict, METRICS
+from seed import seed
 
 Base.metadata.create_all(bind=engine)
+
+# Initialize demo data if the production database is empty
+seed()
+
 TOKENS={}
 app=FastAPI(title="NixSecure API", version="1.0.0")
 app.add_middleware(
