@@ -1,0 +1,2 @@
+import {motion} from 'framer-motion';
+export default function ScoreRing({score,risk}:{score:number;risk:string}){const r=70,c=2*Math.PI*r;return <div className={`score-ring ${risk.toLowerCase()}`}><svg viewBox="0 0 180 180"><circle className="ring-bg" cx="90" cy="90" r={r}/><motion.circle initial={{strokeDashoffset:c}} animate={{strokeDashoffset:c-(score/100)*c}} transition={{duration:1.1,ease:'easeOut'}} className="ring-value" cx="90" cy="90" r={r} strokeDasharray={c} /></svg><div className="score-center"><strong>{Math.round(score)}</strong><span>/ 100</span></div></div>}

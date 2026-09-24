@@ -1,0 +1,91 @@
+{
+  "features": [
+    "device_type",
+    "failed_login_attempts",
+    "open_ports",
+    "total_vulnerabilities",
+    "critical_vulnerabilities",
+    "patch_age_days",
+    "network_anomaly_score",
+    "malware_alerts",
+    "privilege_escalation_attempts",
+    "previous_security_incidents"
+  ],
+  "target": "risk_level",
+  "selected_model": "Random Forest",
+  "metrics": {
+    "Logistic Regression": {
+      "accuracy": 0.9972,
+      "precision": 0.9972,
+      "recall": 0.9972,
+      "f1": 0.9972,
+      "roc_auc": 0.9999,
+      "confusion_matrix": [
+        [
+          168,
+          1,
+          0
+        ],
+        [
+          0,
+          104,
+          0
+        ],
+        [
+          0,
+          0,
+          87
+        ]
+      ]
+    },
+    "Decision Tree": {
+      "accuracy": 0.6444,
+      "precision": 0.6562,
+      "recall": 0.6444,
+      "f1": 0.6491,
+      "roc_auc": 0.7865,
+      "confusion_matrix": [
+        [
+          117,
+          45,
+          7
+        ],
+        [
+          31,
+          55,
+          18
+        ],
+        [
+          8,
+          19,
+          60
+        ]
+      ]
+    },
+    "Random Forest": {
+      "accuracy": 0.7944,
+      "precision": 0.8,
+      "recall": 0.7944,
+      "f1": 0.7967,
+      "roc_auc": 0.928,
+      "confusion_matrix": [
+        [
+          142,
+          27,
+          0
+        ],
+        [
+          19,
+          71,
+          14
+        ],
+        [
+          0,
+          14,
+          73
+        ]
+      ]
+    }
+  },
+  "dataset_note": "Synthetic prototype dataset generated for NixSecure. Metrics are evaluation results on this synthetic dataset and are not production performance claims."
+}

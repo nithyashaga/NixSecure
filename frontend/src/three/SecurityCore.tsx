@@ -1,0 +1,8 @@
+import {Canvas,useFrame} from '@react-three/fiber';
+import {Float, OrbitControls, Stars, Line} from '@react-three/drei';
+import {useRef} from 'react';
+import * as THREE from 'three';
+
+function Core(){const ref=useRef<THREE.Mesh>(null!);useFrame((_,d)=>{ref.current.rotation.x+=d*.15;ref.current.rotation.y+=d*.28});return <mesh ref={ref}><icosahedronGeometry args={[1.35,2]}/><meshStandardMaterial color="#20bfff" emissive="#0877ff" emissiveIntensity={1.4} wireframe transparent opacity={.62}/></mesh>}
+function Node({position,risk}:{position:[number,number,number];risk:string}){const c=risk==='HIGH'?'#ff4d6d':risk==='MEDIUM'?'#ffb84a':'#35e0a1';return <Float speed={1.2} rotationIntensity={.3} floatIntensity={.7}><mesh position={position}><sphereGeometry args={[.11,16,16]}/><meshStandardMaterial color={c} emissive={c} emissiveIntensity={2}/></mesh></Float>}
+export default function SecurityCore({compact=false}:{compact?:boolean}){const nodes:[number,number,number][]=[[-2,1,0],[2,.8,-.4],[-1.8,-1,.4],[1.7,-1.1,.3],[0,2,-.7],[0,-2,-.3]];return <div className={compact?'scene compact':'scene'}><Canvas camera={{position:[0,0,6],fov:45}} dpr={[1,1.6]}><ambientLight intensity={.6}/><pointLight position={[2,2,3]} intensity={20} color="#28c7ff"/><pointLight position={[-3,-2,2]} intensity={12} color="#25e0a0"/><Stars radius={20} depth={12} count={900} factor={2} fade speed={.4}/><Core/>{nodes.map((p,i)=><Node key={i} position={p} risk={i===1||i===3?'HIGH':i===4?'MEDIUM':'LOW'}/>)}{nodes.map((p,i)=><Line key={'l'+i} points={[[0,0,0],p]} color={i===1||i===3?'#ff4d6d':'#26bfff'} transparent opacity={.3} lineWidth={1}/>)}<OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={.5}/></Canvas></div>}
